@@ -26,6 +26,13 @@ hoteis = [
         'estrelas': 3.3,
         'diaria': 289.92,
         'cidade': 'Diadema'
+    },
+    {
+        'hotel_id':'Choque',
+        'nome': 'Choque Radius',
+        'estrelas': 3.8,
+        'diaria': 305.92,
+        'cidade': 'São Bernardo do Campo'
     }
 
 ]
