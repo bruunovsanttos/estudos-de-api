@@ -38,7 +38,7 @@ hoteis = [
 ]
 class Hoteis(Resource):
     def get(self):
-        return {'hoteis':'meus hoteis'}
+        return {'hoteis': hoteis}
 
 api.add_resource(Hoteis, '/hoteis')
 
