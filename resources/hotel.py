@@ -40,7 +40,7 @@ class Hotel(Resource):
         for hotel in hoteis:
             if hotel['hotel_id'] == hotel_id:
                 return hotel
-            return {'message': 'Hotel not found.'}, 404 #não achado
+        return {'message': 'Hotel not found.'}, 404 #não achado
 
 
     def post(self, hotel_id):
