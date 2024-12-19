@@ -2,28 +2,28 @@ from flask_restful import Resource
 
 hoteis = [
     {
-        'hotel_id':'Infinity',
+        'hotel_id':'infinity',
         'nome': 'Infinity Hotel',
         'estrelas': 4.9,
         'diaria': 450.92,
         'cidade': 'São Bernardo do Campo'
     },
     {
-        'hotel_id':'Properity',
+        'hotel_id':'prosperity',
         'nome': 'Hotel Prosperidade',
         'estrelas': 4.0,
         'diaria': 400.92,
         'cidade': 'Santo André'
     },
     {
-        'hotel_id':'Coconut',
+        'hotel_id':'coconut',
         'nome': 'Coco Salgado',
         'estrelas': 3.3,
         'diaria': 289.92,
         'cidade': 'Diadema'
     },
     {
-        'hotel_id':'Choque',
+        'hotel_id':'choque',
         'nome': 'Choque Radius',
         'estrelas': 3.8,
         'diaria': 305.92,
