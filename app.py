@@ -1,44 +1,9 @@
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Api
+from resources.hotel import Hoteis
 
 app = Flask(__name__)
 api = Api(app)
-
-
-hoteis = [
-    {
-        'hotel_id':'Infinity',
-        'nome': 'Infinity Hotel',
-        'estrelas': 4.9,
-        'diaria': 450.92,
-        'cidade': 'São Bernardo do Campo'
-    },
-    {
-        'hotel_id':'Properity',
-        'nome': 'Hotel Prosperidade',
-        'estrelas': 4.0,
-        'diaria': 400.92,
-        'cidade': 'Santo André'
-    },
-    {
-        'hotel_id':'Coconut',
-        'nome': 'Coco Salgado',
-        'estrelas': 3.3,
-        'diaria': 289.92,
-        'cidade': 'Diadema'
-    },
-    {
-        'hotel_id':'Choque',
-        'nome': 'Choque Radius',
-        'estrelas': 3.8,
-        'diaria': 305.92,
-        'cidade': 'São Bernardo do Campo'
-    }
-
-]
-class Hoteis(Resource):
-    def get(self):
-        return {'hoteis': hoteis}
 
 api.add_resource(Hoteis, '/hoteis')
 
