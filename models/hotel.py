@@ -3,7 +3,7 @@ from sql_alchemy import banco
 
 class HotelModel(banco.Model):
     __tablename__ = 'hoteis' #estancia a tabela
-        
+
     #estancia as colunas dessa tabela abaixo
     hotel_id = banco.Column(banco.String, primary_key=True)#instancioando chave primario no hotel ID
     nome = banco.Column(banco.String(80))#estancia o nome com 80 caracteres
