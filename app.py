@@ -4,7 +4,7 @@ from resources.hotel import Hoteis, Hotel
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URL'] = 'sqlite: ///banco.db' #cria um banco na raiz do programa
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
 
 @app.before_first_request
