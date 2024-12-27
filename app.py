@@ -11,8 +11,6 @@ api = Api(app)
 def banco_dados():
     banco.create_all()
 
-
-
 api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
 
