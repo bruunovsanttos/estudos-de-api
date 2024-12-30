@@ -58,7 +58,7 @@ class Hotel(Resource):
 
     def post(self, hotel_id):
         if HotelModel.find_hotel(hotel_id):
-            return {'mesage': 'Hotel id "{}" already exists.'.format(hotel_id)} , 400 #bad request
+            return {"mesage": "Hotel id '{}' already exists.".format(hotel_id)} , 400 #bad request
 
 
         dados = Hotel.argumentos.parse_args()
