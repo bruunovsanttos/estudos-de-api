@@ -76,19 +76,11 @@ class Hotel(Resource):
             return {'mesage': 'Hotel id "{}" already exists.'.format(hotel_id)} , 400 #bad request
 
 
-        dados = Hotel.argumentos.parse_args()
-        hotel_objeto = HotelModel(hotel_id, **dados)
-        novo_hotel = hotel_objeto.json()
-        #novo_hotel = {
-        #    'hotel_id': hotel_id,
-        #    'nome': dados['nome'],
-        #    'estrelas': dados['estrelas'],
-        #    'diaria': dados['diaria'],
-        #    'cidade': dados['cidade']
-        #}
+        dados = Hotel.atributos.parse_args()
+        hotel = HotelModel(hotel_id, **dados)
+        hotel.save_hotel()
 
-        hoteis.append(novo_hotel)
-        return novo_hotel, 200
+
 
     def put(self, hotel_id):
 

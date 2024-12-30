@@ -34,3 +34,7 @@ class HotelModel(banco.Model):
         if hotel:
             return hotel
         return None
+
+    def save_hotel(self):
+        banco.session.add(self)# adiciona o objeto ao banco de dados
+        banco.session.commit()
