@@ -74,8 +74,9 @@ class Hotel(Resource):
 
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
 
-        if hotel:
+        if hotel_encontrado:
             hotel_encontrado.update_hotel(**dados)#se não houer um hotel com o nome ele retorna criando um novo hotel
+            hotel_encontrado.save_hotel()#salvando no baco de dados
             return hotel_encontrado.json(), 200
         hotel = HotelModel(hotel_id, **dados)
         hotel.save_hotel() #criando novo hotel se não tem um hotel existente
