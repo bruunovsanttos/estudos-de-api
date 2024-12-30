@@ -23,14 +23,14 @@ class HotelModel(banco.Model):
         return {
             'hotel_id': self.hotel_id,
             'nome': self.nome,
-            'estrela': self.estrelas,
+            'estrelas': self.estrelas,
             'diaria': self.diaria,
             'cidade': self.cidade
         }
 
     @classmethod
     def find_hotel(cls, hotel_id):
-        hotel = cls.query.filter_by(hotel_id=hotel_id).first()  # selec * from hoteis where hotel_id = hotel_id
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first()  #selec * from hoteis where hotel_id = hotel_id
         if hotel:
             return hotel
         return None
