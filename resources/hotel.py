@@ -51,7 +51,7 @@ class Hotel(Resource):
     def get(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
         if hotel:
-            return hotel.json
+            return hotel.json()
 
         return {'message': 'Hotel not found.'}, 404 #não achado
 
