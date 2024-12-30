@@ -27,3 +27,10 @@ class HotelModel(banco.Model):
             'diaria': self.diaria,
             'cidade': self.cidade
         }
+
+    @classmethod
+    def find_hotel(cls, hotel_id):
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first()  # selec * from hoteis where hotel_id = hotel_id
+        if hotel:
+            return hotel
+        return None

@@ -48,6 +48,8 @@ class HotelModel:
             'cidade': self.cidade
         }
 
+
+
 class Hoteis(Resource):
     def get(self):
         return {'hoteis': hoteis}
@@ -60,11 +62,7 @@ class Hotel(Resource):
     argumentos.add_argument('diaria')
     argumentos.add_argument('cidade')
 
-    def encontrar_hotel(hotel_id):
-        for hotel in hoteis:
-            if hotel['hotel_id'] == hotel_id:
-                return hotel
-        return None
+
     def get(self, hotel_id):
         hotel = Hotel.encontrar_hotel(hotel_id)
         if hotel:
@@ -74,6 +72,8 @@ class Hotel(Resource):
 
 
     def post(self, hotel_id):
+        if HotelModel.find_hotel(hotel_id):
+            return {'mesage': 'Hotel id "{}" already exists.'.format(hotel_id)} , 400 #bad request
 
 
         dados = Hotel.argumentos.parse_args()
