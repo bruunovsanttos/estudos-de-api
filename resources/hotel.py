@@ -71,20 +71,15 @@ class Hotel(Resource):
     def put(self, hotel_id):
 
         dados = Hotel.argumentos.parse_args()
-        novo_hotel = { 'hotel_id': hotel_id, **dados} # **dados desempacota os dados do hotel em forma de chave e valor facilitando a escrita do codigo ao inves de escrever todas as chaves e valores:
-            #'nome': dados['nome'],
-            # 'estrelas': dados['estrelas'],
-            #'diaria': dados['diaria'],
-            #'cidade': dados['cidade']
-            #isso criando os argumentos em cima no codigo das instancias da classe
 
-        hotel = Hotel.encontrar_hotel(hotel_id)
+        hotel_encontrado = HotelModel.find_hotel(hotel_id)
 
         if hotel:
-            hotel.update(novo_hotel)#se não houer um hotel com o nome ele retorna criando um novo hotel
-            return novo_hotel, 200
-        hoteis.append(novo_hotel)#criando novo hotel se não tem um hotel existente
-        return novo_hotel, 201 #created (criado novo hotel)
+            hotel_encontrado.update_hotel(**dados)#se não houer um hotel com o nome ele retorna criando um novo hotel
+            return hotel_encontrado.json(), 200
+        hotel = HotelModel(hotel_id, **dados)
+        hotel.save_hotel() #criando novo hotel se não tem um hotel existente
+        return hotel.json(), 201 #created (criado novo hotel)
 
     def delete(self, hotel_id):
         global hoteis #pega os dados da lista de hoteis
