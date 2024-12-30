@@ -79,6 +79,7 @@ class Hotel(Resource):
         dados = Hotel.atributos.parse_args()
         hotel = HotelModel(hotel_id, **dados)
         hotel.save_hotel()
+        return hotel.json()
 
 
 
