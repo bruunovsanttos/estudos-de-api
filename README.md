@@ -8,7 +8,7 @@ Neste curso os aprendizados no final serão:
 * Criar REST APIs com Flask-RESTful ✅
 * Testar Web APIs com Postman ✅
 * Autenticação de Usuários REST ⏳
-* Integrar API com Sqlite3, PostgreSQL e MySQL usando SQLAlchemy ⏳
+* Integrar API com Sqlite3, PostgreSQL e MySQL usando SQLAlchemy ✅
 * Deploy para Servidor Linux - AWS ⏳
 * Deploy para Servidor Linux - Google Cloud ⏳
 * Deploy para Heroku ⏳
