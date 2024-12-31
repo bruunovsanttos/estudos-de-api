@@ -87,4 +87,4 @@ class Hotel(Resource):
         if hotel:
             hotel.delete_hotel()
             return {'message': 'Hotel deleted'}
-        return {'message':'Hotel not found'.}, 404
+        return {'message':'Hotel not found'}, 404
