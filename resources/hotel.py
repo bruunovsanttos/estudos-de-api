@@ -8,8 +8,8 @@ class Hoteis(Resource):
 class Hotel(Resource):
 
     argumentos = reqparse.RequestParser()
-    argumentos.add_argument('nome', type=str, required=True)# deixa campos obrigatórios
-    argumentos.add_argument('estrelas', type=float, required=True)
+    argumentos.add_argument('nome', type=str, required=True, help="O campo 'nome' não pode ser deixado em branco.")# deixa campos obrigatórios
+    argumentos.add_argument('estrelas', type=float, required=True, help="O campo 'estrelas' não pode ser deixado em branco.")
     argumentos.add_argument('diaria')
     argumentos.add_argument('cidade')
 
