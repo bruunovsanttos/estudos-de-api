@@ -1,39 +1,5 @@
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
-hoteis = [
-    {
-        'hotel_id':'infinity',
-        'nome': 'Infinity Hotel',
-        'estrelas': 4.9,
-        'diaria': 450.92,
-        'cidade': 'São Bernardo do Campo'
-    },
-    {
-        'hotel_id':'prosperity',
-        'nome': 'Hotel Prosperidade',
-        'estrelas': 4.0,
-        'diaria': 400.92,
-        'cidade': 'Santo André'
-    },
-    {
-        'hotel_id':'coconut',
-        'nome': 'Coco Salgado',
-        'estrelas': 3.3,
-        'diaria': 289.92,
-        'cidade': 'Diadema'
-    },
-    {
-        'hotel_id':'choque',
-        'nome': 'Choque Radius',
-        'estrelas': 3.8,
-        'diaria': 305.92,
-        'cidade': 'São Bernardo do Campo'
-    }
-
-]
-
-
-
 
 class Hoteis(Resource):
     def get(self):
@@ -42,8 +8,8 @@ class Hoteis(Resource):
 class Hotel(Resource):
 
     argumentos = reqparse.RequestParser()
-    argumentos.add_argument('nome')
-    argumentos.add_argument('estrelas')
+    argumentos.add_argument('nome', type=str, required=True)# deixa campos obrigatórios
+    argumentos.add_argument('estrelas', type=float, required=True)
     argumentos.add_argument('diaria')
     argumentos.add_argument('cidade')
 
