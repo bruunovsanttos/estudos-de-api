@@ -10,6 +10,11 @@ class User(Resource):
 
         return {'message': 'User not found.'}, 404 #não achado
 
+    def json(self):
+        return {
+            'user_id': self.user_id,
+            'login': self.login
+        }
     def delete(self, user_id):
         user = UserModel.find_user(user_id)
         if user:
@@ -29,4 +34,4 @@ class UserRegister(Resource):
 
         user = UserModel(**dados)
         user.save_user()
-        return {'message': 'User cread successfuly'}, 201
+        return {'message': 'User created successfuly'}, 201

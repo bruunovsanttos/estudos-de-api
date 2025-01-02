@@ -26,13 +26,13 @@ class UserModel(banco.Model):
         if user:
             return user
         return None
-
+    @classmethod
     def find_by_login(cls, login):
         user = cls.query.filter_by(login=login).first()  #selec * from hoteis where hotel_id = hotel_id
         if user:
             return user
         return None
-    
+
     def save_user(self):
         banco.session.add(self)# adiciona o objeto ao banco de dados
         banco.session.commit()
