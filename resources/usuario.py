@@ -16,3 +16,7 @@ class User(Resource):
             user.delete_user()
             return {'message': 'User deleted'}
         return {'message':'User not found'}, 404
+
+class UserRegister(Resource):
+    def post(self):
+        pass
