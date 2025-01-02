@@ -19,4 +19,15 @@ class User(Resource):
 
 class UserRegister(Resource):
     def post(self):
-        pass
+        atributos = reqparse.RequestParser()
+        atributos.add_argument('login', type=str, required=True, help="The Field 'login' cannot be left blank")
+        atributos.add_argument('senha', type=str, required=True, help="The Field 'senha' cannot be left blank")
+        dados = atributos.parse_args()
+
+        if UserModel.find_by_login(dados['login']):
+            return {f"message": "The login '{}' already exists".format(dados['login'])}
+
+        user = UserModel(**dados)
+        user.save_user()
+        return {'message': 'User cread successfuly'}, 201
+    
