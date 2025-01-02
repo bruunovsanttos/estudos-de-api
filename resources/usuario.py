@@ -30,4 +30,3 @@ class UserRegister(Resource):
         user = UserModel(**dados)
         user.save_user()
         return {'message': 'User cread successfuly'}, 201
-    
