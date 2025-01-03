@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.usuario import UserModel
 from flask_jwt_extended import create_access_token
-from werkzeug.security import safe_str_cmp
+import hmac
 
 atributos = reqparse.RequestParser()
 atributos.add_argument('login', type=str, required=True, help="The Field 'login' cannot be left blank")
@@ -47,7 +47,7 @@ class UserLogin(Resource):
 
         user = UserModel.find_by_login(dados['login'])
 
-        if user and safe_str_cmp(user.senha, dados['senha']):
+        if user and hmac.compare_digest(user.senha, dados['senha']):
             token_de_acesso = create_access_token(identity=user.user_id)
             return {'access_token': token_de_acesso}, 200
         return {'message':'The username or password is incorrect.'}, 401
