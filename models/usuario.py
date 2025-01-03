@@ -16,7 +16,7 @@ class UserModel(banco.Model):
 
     def json(self):
         return {
-            'user_id': self.hotel_id,
+            'user_id': self.user_id,
             'login': self.login
         }
 
