@@ -48,6 +48,6 @@ class UserLogin(Resource):
         user = UserModel.find_by_login(dados['login'])
 
         if user and hmac.compare_digest(user.senha, dados['senha']):
-            token_de_acesso = create_access_token(identity=user.user_id)
+            token_de_acesso = create_access_token(identity=str(user.user_id))
             return {'access_token': token_de_acesso}, 200
         return {'message':'The username or password is incorrect.'}, 401
