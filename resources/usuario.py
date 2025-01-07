@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.usuario import UserModel
-from flask_jwt_extended import create_access_token, jwt_required
+from flask_jwt_extended import create_access_token, jwt_required, get_raw_jwt
 import hmac
 
 atributos = reqparse.RequestParser()
@@ -50,4 +50,12 @@ class UserLogin(Resource):
         if user and hmac.compare_digest(user.senha, dados['senha']):
             token_de_acesso = create_access_token(identity=str(user.user_id))
             return {'access_token': token_de_acesso}, 200
-        return {'message':'The username or password is incorrect.'}, 401
+        return {'message'
+                :'The username or password is incorrect.'}, 401
+
+class UserLogout(Resource):
+    @jwt_required()
+    def post(self):
+        jwt_id = get_raw_jwt()['jti']
+        BLACKLIST.add(jwt_id)
+        return {'message':'Logged out succesfully'}, 200
