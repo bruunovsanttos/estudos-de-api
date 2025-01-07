@@ -1,7 +1,8 @@
 from flask_restful import Resource, reqparse
 from models.usuario import UserModel
-from flask_jwt_extended import create_access_token, jwt_required, get_raw_jwt
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt
 import hmac
+from blacklist import BLACKLIST
 
 atributos = reqparse.RequestParser()
 atributos.add_argument('login', type=str, required=True, help="The Field 'login' cannot be left blank")
@@ -56,6 +57,6 @@ class UserLogin(Resource):
 class UserLogout(Resource):
     @jwt_required()
     def post(self):
-        jwt_id = get_raw_jwt()['jti']
+        jwt_id = get_jwt()['jti']
         BLACKLIST.add(jwt_id)
         return {'message':'Logged out succesfully'}, 200
