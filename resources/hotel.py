@@ -18,6 +18,10 @@ path_params.add_argument('offset', type=float)
 class Hoteis(Resource):
     def get(self):
         dados = path_params.parse_args()
+        {'limit':50, 'diaria_min': None}
+        dados['limit']
+        dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None}
+        
         return {'hoteis':[hotel.json() for hotel in HotelModel.query.all()]}
 
 class Hotel(Resource):
