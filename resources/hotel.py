@@ -3,6 +3,30 @@ from models.hotel import HotelModel
 from flask_jwt_extended import create_access_token, jwt_required
 import sqlite3
 
+def normalize_path_params(cidade = None,
+                          estrelas_min = 0,
+                          estrelas_max = 5,
+                          diaria_min = 0,
+                          diaria_max = 10000,
+                          limit = 50,
+                          offset = 0, **dados):
+    if cidade:
+        return{
+            'estrelas_min':estrelas_min,
+            'estrelas_mas':estrelas_max,
+            'diaria_min': diaria_min,
+            'diaria_max': diaria_max,
+            'cidade': cidade,
+            'limit':limit,
+            'offset': offset}
+    return {
+        'estrelas_min': estrelas_min,
+        'estrelas_mas': estrelas_max,
+        'diaria_min': diaria_min,
+        'diaria_max': diaria_max,
+        'limit': limit,
+        'offset': offset}
+
 #criação do path para as querys de varios parametros
 #contrutor do path
 path_params = reqparse.RequestParser()
@@ -20,8 +44,7 @@ class Hoteis(Resource):
         dados = path_params.parse_args()
         {'limit':50, 'diaria_min': None}
         dados['limit']
-        dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None}
-        
+        dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None} #procurar depois como fazer isso sem listcomprehension
         return {'hoteis':[hotel.json() for hotel in HotelModel.query.all()]}
 
 class Hotel(Resource):
