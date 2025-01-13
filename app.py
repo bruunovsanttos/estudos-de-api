@@ -4,9 +4,13 @@ from resources.hotel import Hoteis, Hotel
 from resources.usuario import User, UserRegister, UserLogin, UserLogout
 from flask_jwt_extended import JWTManager
 from blacklist import BLACKLIST
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE_PATH = os.path.join(BASE_DIR, 'banco.db')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db' #cria um banco na raiz do programa
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DATABASE_PATH}' #cria um banco na raiz do programa
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
 app.config['JWT_BLACKLIST_ENABLE'] = True

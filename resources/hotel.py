@@ -13,7 +13,7 @@ def normalize_path_params(cidade = None,
     if cidade:
         return{
             'estrelas_min':estrelas_min,
-            'estrelas_mas':estrelas_max,
+            'estrelas_max':estrelas_max,
             'diaria_min': diaria_min,
             'diaria_max': diaria_max,
             'cidade': cidade,
@@ -50,14 +50,14 @@ class Hoteis(Resource):
         dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None} #procurar depois como fazer isso sem listcomprehension
         parametros = normalize_path_params(**dados_validos)
 
-        if not parametros.get('cidade'):
-            consulta = "SELECT * FROM hoteis WHERE (estrelas>? and estrelas<?) and (diaria> ? and diaria < ?) and cidade = ? LIMIT ? OFFSET ?"
+        if parametros.get('cidade'):
+            consulta = "SELECT * FROM hoteis WHERE (estrelas > ? AND estrelas < ?) AND (diaria > ? AND diaria < ?) AND cidade = ? LIMIT ? OFFSET ?"
             tupla = tuple([parametros[chave] for chave in parametros])
-            resultado = cursor.execute(consulta (tupla))
+            resultado = cursor.execute(consulta, tupla)
         else:
-            consulta = "SELECT * FROM hoteis WHERE (estrelas>? and estrelas<?) and (diaria> ? and diaria < ?) LIMIT ? OFFSET ?"
+            consulta = "SELECT * FROM hoteis WHERE (estrelas > ? AND estrelas < ?) AND (diaria > ? AND diaria < ?) LIMIT ? OFFSET ?"
             tupla = tuple([parametros[chave] for chave in parametros])
-            resultado = cursor.execute(consulta(tupla))
+            resultado = cursor.execute(consulta, tupla)
 
         hoteis = []
         for linha in resultado:
