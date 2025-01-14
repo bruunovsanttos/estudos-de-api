@@ -12,12 +12,12 @@ def normalize_path_params(cidade = None,
                           offset = 0, **dados):
     if cidade:
         return{
-            'estrelas_min':estrelas_min,
-            'estrelas_max':estrelas_max,
+            'estrelas_min': estrelas_min,
+            'estrelas_max': estrelas_max,
             'diaria_min': diaria_min,
             'diaria_max': diaria_max,
             'cidade': cidade,
-            'limit':limit,
+            'limit': limit,
             'offset': offset}
     return {
         'estrelas_min': estrelas_min,
