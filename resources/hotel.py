@@ -21,7 +21,7 @@ def normalize_path_params(cidade = None,
             'offset': offset}
     return {
         'estrelas_min': estrelas_min,
-        'estrelas_mas': estrelas_max,
+        'estrelas_max': estrelas_max,
         'diaria_min': diaria_min,
         'diaria_max': diaria_max,
         'limit': limit,
