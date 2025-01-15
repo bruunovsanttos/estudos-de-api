@@ -17,13 +17,9 @@ app.config['JWT_BLACKLIST_ENABLE'] = True
 api = Api(app)
 jwt = JWTManager(app)
 
-
 #@app.before_first_request nas versões atuais do flask não é mais utilizado esse modelo. por isso da erro
 # def banco_dados():
 #    banco.create_all()
-
-
-
 api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
 api.add_resource(User, '/usuarios/<int:user_id>')
